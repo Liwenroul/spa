@@ -1,8 +1,9 @@
-$(function() {
-    var a = $("#range")
-      , n = $("#age");
-    n.html(a.val()),
-    a.change(function() {
-        n.html(a.val())
-    })
+$(function(){
+    // Dom
+    var $range=$("#range");
+    var $age=$("#age");
+
+    $range.change(function(){
+        $age.html($range.val());
+    });
 });

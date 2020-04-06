@@ -1,22 +1,21 @@
 $(function(){
-    var $btn=$('input'),
-    timer;
+    var $btn=$("#btn");
+    var num=9;
+    var timer;
+
+    timer=setInterval(function(){
+        num--
+        if(num===0){
+            clearInterval(timer);
+            $btn.val('同意');
+            $btn.removeAttr('disabled');
+        }
+        else{
+            $btn.val('同意（'+num+'s)');
+        }
+    },1000);
 
     $btn.click(function(){
-        // $btn.attr("disabled",true);
-        num=6;
-        timer=setInterval(function(){
-            $btn.attr("disabled",true);
-            // num--;
-            if(num === 0){
-                clearInterval(timer);
-                $btn.val('同意');
-                $btn.removeAttr('disabled');
-            }
-            else{
-                $btn.val('同意('+num+')s');
-            }
-            num--;
-        },1000);
-    })
-})
+        alert('就知道你会同意！');
+    });
+});
