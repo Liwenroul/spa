@@ -1,14 +1,6 @@
+// 工厂函数
 var $timerButton=(function(){
-    var $btn=$('<input class="timer-button" type="button" disabled>');
-    var timer;
-    var cfg={
-        container:'body',
-        num:6,
-        title:'同意',
-        onClick:function(){
-            console.log("a")
-        }
-    }
+    
     // var $btn=$("#btn");
     // console.log($btn);
 
@@ -17,6 +9,15 @@ var $timerButton=(function(){
     //     width: "100px"
     // })
     function show(conf){
+        var timer;
+    var cfg={
+        container:'body',
+        num:6,
+        title:'同意',
+        onClick:null
+    }
+        var $btn=$('<input class="timer-button" type="button" disabled>');
+
         // 1.DOM绘制
         $(cfg.container).append($btn);
         $.extend(cfg,conf);//扩展
@@ -35,9 +36,7 @@ var $timerButton=(function(){
             }
         },1000);
     
-        $btn.click(function(){
-            cfg.onClick();
-        });
+        $btn.click(cfg.onClick);
     }
 
     return {
@@ -45,6 +44,42 @@ var $timerButton=(function(){
     }
 }());
 
+// 构造函数
+function TimerButton(){
+    var $btn=$('<input class="timer-button" type="button" disabled>');
+    var $btn=$("#btn");
+    console.log($btn);
+
+    $(".timer-button").css({
+        height:"50px",
+        width: "100px"
+    })
+    this.show=function(conf){
+        // 1.DOM绘制
+        $(cfg.container).append($btn);
+        $.extend(cfg,conf);//扩展
+
+        $btn.val(cfg.title+"("+cfg.num+"s)")
+        // 2.事件绑定
+        timer=setInterval(function(){
+            cfg.num--
+            if(cfg.num===0){
+                clearInterval(timer);
+                $btn.val(cfg.title);
+                $btn.removeAttr('disabled');
+            }
+            else{
+                $btn.val(cfg.title+'（'+cfg.num+'s)');
+            }
+        },1000);
+    
+        $btn.click(cfg.onClick);
+    }
+
+    return {
+        show:show
+    }
+};
 // 不用page load event
 
 // 封装成对象，有几种方案

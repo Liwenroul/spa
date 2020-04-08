@@ -17,10 +17,27 @@
     <script src="./timer-button.js"></script>
     <script>
         $(function(){
+            // 构造函数
+            // var $btnAdd=$("#add");
+            // var tb1=new TimerButton();
+            //     tb1.show({num:6,title:'发送验证码',onClick:function(){
+            //         alter("同意");
+            //     }});
+            // $btnAdd.click(function () {
+            //     var tb=new TimerButton();
+            //     tb.show({num:6,title:'同意',onClick:function(){
+            //         alter("就知道你会同意");
+            //     }});
+            //     // console.log('add');
+            // })
+
             var $btnAdd=$("#add");
+            $timerButton.show({num:9,title:'发送验证码',onClick:function(){
+                    alert("短信验证");
+                }});
             $btnAdd.click(function () {
-                $timerButton.show({num:6,title:'发送验证码',onClick:function(){
-                    console.log("点击了");
+                $timerButton.show({num:6,title:'同意',onClick:function(){
+                    alter("就知道你会同意");
                 }});
                 // console.log('add');
             })
