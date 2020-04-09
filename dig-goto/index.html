@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goto dialog的测试页面</title>
+    <link rel="stylesheet" href="./dig-goto.css">
+</head>
+<body>
+    <input id="popup" type="button" value="弹出对话框">
+    <hr>
+    <!-- div-mask-full-screen :div-dialog-box(全屏遮罩) -->
+    <!-- div-dialog-box : div-title div-main -->
+    <!-- div-title: p span-close-btn -->
+    <!-- div-main: label br input-text br input-button input-button -->
+    <!-- 模态对话框 添加透明遮罩，不关闭弹框，后面不可点击-->
+    <!-- <div class="notepad-dlg-goto">
+        <div class="dialogbox">
+            <div class="titlebar">
+                <p class="title">转到指定行</p>
+                <span class="close-btn">X</span>
+            </div>
+            <div class="main">
+                <label for="">行号(L):</label>
+                <br>
+                <input calss="txt-line-num" type="text" autofocus>
+                <br>
+                <input class="btn-goto" type="button" value="转到">
+                <input class="btn-cancel" type="button" value="取消">
+            </div>
+        </div>
+    </div> -->
+    <div></div>
+</body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="./dig-goto.js"></script>
+    <script>
+        $(function(){
+            var $btnDlg=$("#popup");
+            $btnDlg.click(function () {
+                $dlgGoto.show({num:6,title:'同意',onClick:function(){
+                    alter("就知道你会同意");
+                }});
+                // console.log('add');
+            })
+        })
+    </script>
+</html>
